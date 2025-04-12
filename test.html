@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f8ff;
+            /* Light blue background */
+            color: #002147;
+            /* Dark blue text */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #002147;
+            /* Dark blue */
+            color: #ffffff;
+            /* White text */
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            /* Limit width for larger screens */
+        }
+
+        .phase {
+            background-color: #ffffff;
+            /* White background */
+            border: 2px solid #002147;
+            /* Dark blue border */
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .phase:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .phase-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .phase h2 {
+            font-size: 1.5rem;
+            color: #002147;
+        }
+
+        .phase-description {
+            font-size: 1rem;
+            color: #555555;
+        }
+
+        .btn {
+            background-color: #002147;
+            /* Dark blue */
+            color: #ffffff;
+            /* White text */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            /* Lighter blue */
+            transform: scale(1.05);
+        }
+
+        .status-container {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .status.incomplete {
+            color: #ff4500;
+            /* Orange for incomplete */
+        }
+
+        .status.complete {
+            color: #32cd32;
+            /* Green for complete */
+        }
+
+        .footer {
+            background-color: #002147;
+            /* Dark blue */
+            color: #ffffff;
+            /* White text */
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        .footer .highlight {
+            font-weight: bold;
+            color: #87ceeb;
+            /* Sky blue */
+        }
+
+        /* Enhanced Animations */
+        .phase {
+            animation: fadeIn 1s ease-out both;
+            /* Fade in effect */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status {
+            transition: color 0.5s ease, font-size 0.3s ease;
+            /* Smooth transition for status changes */
+        }
+
+        .status.status-change {
+            font-size: 1.1rem;
+            /* Slightly larger when changed */
+        }
+
+        /* Theming for visual appeal */
+        body {
+            background: linear-gradient(to bottom, #e6f9ff, #ffffff);
+            /* Softer gradient background */
+        }
+
+        header {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow on header */
+        }
+
+        .footer {
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow on footer */
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .phase {
+                width: 95%;
+                /* Wider on smaller screens */
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Test</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="phase">
+                <i class="fas fa-check-circle phase-icon"></i>
+                <h2>Phase 1: Skill Test</h2>
+                <p class="phase-description">Setting up the project environment and initial configurations.</p>
+                <button class="btn attempt-btn" data-phase="1">Attempt</button>
+                <div class="status-container">
+                    Status: <span class="status incomplete" id="status-1">Incomplete</span>
+                </div>
+            </div>
+
+            <div class="phase">
+                <i class="fas fa-cogs phase-icon"></i>
+                <h2>Phase 2: HR and Skill</h2>
+                <p class="phase-description">Developing the core features and functionalities of the application.</p>
+                <button class="btn attempt-btn" data-phase="2">Attempt</button>
+                <div class="status-container">
+                    Status: <span class="status incomplete" id="status-2">Incomplete</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        Keep pushing forward! <span class="highlight">Your Progress Matters</span>.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const attemptButtons = document.querySelectorAll('.attempt-btn');
+            const statuses = {
+                1: document.getElementById('status-1'),
+                2: document.getElementById('status-2')
+            };
+
+            // --- Function to update status ---
+            function updateStatus(phaseId, status) {
+                const statusElement = statuses[phaseId];
+                if (statusElement) {
+                    statusElement.textContent = status;
+                    statusElement.classList.remove('incomplete', 'complete');
+                    statusElement.classList.add(status.toLowerCase());
+                    statusElement.classList.add('status-change');
+                    setTimeout(() => statusElement.classList.remove('status-change'), 300);
+                }
+            }
+
+            // --- Check for completed phase on load ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const completedPhase = urlParams.get('completedPhase');
+            if (completedPhase) {
+                updateStatus(completedPhase, 'Complete');
+                // Clear the URL parameters
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // --- Event Listeners for Attempt Buttons ---
+            attemptButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const phaseId = button.getAttribute('data-phase');
+                    window.location.href = `exam.html?phase=${phaseId}`;
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Container Styles */
+        .reset-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Form Styles */
+        .reset-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+        }
+
+        .form-input {
+            padding: 1rem 1rem 1rem 3rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            width: 100%;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+        }
+
+        /* Button Styles */
+        .submit-button {
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-button:hover {
+            background-color: #2b6cb0;
+        }
+
+        .additional-options {
+            margin-top: 1.5rem;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .additional-options a {
+            color: #4299e1;
+            margin-left: 0.5rem;
+        }
+
+        /* Success Message Styles */
+        .success-message {
+            color: #2d3748;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #edf2f7;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 600px) {
+            .reset-container {
+                padding: 1.5rem;
+            }
+
+            .form-title {
+                font-size: 1.75rem;
+            }
+
+            .form-input {
+                padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+                font-size: 0.9rem;
+            }
+
+            .submit-button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reset-container">
+        <h2 class="form-title">Reset Your Password</h2>
+        <form class="reset-form">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" class="form-input" placeholder="Enter your email" required>
+            </div>
+            <button type="submit" class="submit-button">Send Reset Link</button>
+        </form>
+
+        <div class="additional-options">
+            <a href="c_login.html">Back to Login</a>
+        </div>
+
+        <!-- Display this message after successful submission -->
+        <div class="success-message" style="display: none;">
+            A password reset link has been sent to your email address.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resetForm = document.querySelector('.reset-form');
+            const successMessage = document.querySelector('.success-message');
+
+            resetForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Simulate the sending of the reset link. In real implementation, you would
+                // handle this via an API call to your backend.
+
+                // For this example, we'll just show the success message after a delay.
+                setTimeout(() => {
+                    successMessage.style.display = 'block';
+                    resetForm.style.display = 'none'; // Hide the form after submission
+                }, 1000); // Simulate a 1-second delay
+            });
+        });
+    </script>
+</body>
+</html>
