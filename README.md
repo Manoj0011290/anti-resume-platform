@@ -18,6 +18,8 @@ Php files were used so To get an understanding on how the backend works use ph
                          2) candidate details that have column: name, phone_no, email, state, image	(mediumblob), user_id(foregin key refers to id in users table)
 -> now you have to go to browser and run the c_login.php (url: http://localhost/resume_1/c_login.php)
 -> click on signup and then login and enjoy the webpage 
+## website runs locally
+     I made website locally  i did not host it online 
 
 ## Video Presentation 
     https://drive.google.com/file/d/1jQ20JRGtjBDpsYS1W_oQw_MPPIpTkl7u/view?usp=sharing  
