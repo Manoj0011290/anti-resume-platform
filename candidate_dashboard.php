@@ -351,7 +351,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="test_can.html" class="nav-link">
+        <a href="test.html" class="nav-link">
           <i class="fas fa-clipboard-list"></i>
           <span>Tests</span>
         </a>
